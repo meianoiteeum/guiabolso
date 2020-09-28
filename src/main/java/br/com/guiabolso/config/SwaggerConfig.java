@@ -16,27 +16,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 
 @Configuration
-@EnableSwagger2
 public class SwaggerConfig {
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.baeldung.web.controller"))
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("br.com.guiabolso.controller"))
                 .paths(PathSelectors.ant("/**"))
-                .build()
-                .apiInfo(apiInfo())
-                .useDefaultResponseMessages(false)
-                .globalResponseMessage(RequestMethod.GET, new ArrayList(new ResponseMessageBuilder().code(500)
-                                .message("500 message")
-                                .responseModel(new ModelRef("Error"))
-                                .build(),
-                        new ResponseMessageBuilder().code(403)
-                                .message("Forbidden!!!!!")
-                                .build()));
+                .build();
+        return docket;
     }
 
-    private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo("My REST API", "Some custom description of API.", "API TOS", "Terms of service", new Contact("John Doe", "www.example.com", "myeaddress@company.com"), "License of API", "API license URL", Collections.emptyList());
-        return apiInfo;
-    }
+//    private ApiInfo apiInfo() {
+//        ApiInfo apiInfo = new ApiInfo("My REST API", "Some custom description of API.", "API TOS", "Terms of service", new Contact("John Doe", "www.example.com", "myeaddress@company.com"), "License of API", "API license URL", Collections.emptyList());
+//        return apiInfo;
+//    }
 }
