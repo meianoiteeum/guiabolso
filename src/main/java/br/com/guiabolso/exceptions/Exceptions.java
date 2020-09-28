@@ -2,9 +2,6 @@ package br.com.guiabolso.exceptions;
 
 import org.springframework.stereotype.Component;
 
-import java.text.MessageFormat;
-import java.util.Optional;
-
 @Component
 public class Exceptions {
 
