@@ -17,5 +17,21 @@
 - [ ] cada transação deve ter o timestamp de uma data aleatória em formato long
 - [ ] a data aleatória deve estar dentro do range de ano e mês dados
 - [ ] dado dois conjuntos de dados iguais, as respostas devem ser as mesmas (pelo menos durante o dia que estivermos brincando)
-- [ ] utilize os status HTTP para representar os casos de excessão nas validações
-- [ ] além do status, deve ser respondido o motivo do erro
+- [x] utilize os status HTTP para representar os casos de excessão nas validações
+- [x] além do status, deve ser respondido o motivo do erro
+
+- [x] Contrato
+``` sh
+[GET] /<id>/transacoes/<ano>/<mes>
+
+Content-type: application/json
+
+[
+  {
+     "descricao": "string(10, 120)"
+     "data": "long(timestamp)"
+     "valor": "integer(-9.999.999, 9.999.999)"
+     "duplicated": "boolean"
+  }  
+]
+```
