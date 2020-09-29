@@ -13,4 +13,5 @@ public interface UsuarioService {
     ResponseEntity<Transacao> createTransaction(Integer userId, TransacaoForm form);
     ResponseEntity<List<Usuario>> listAll();
     ResponseEntity<List<Transacao>> listTransactions(Integer userId);
+    ResponseEntity<List<Transacao>> listTransactions(Integer userId, Integer year, Integer month);
 }
