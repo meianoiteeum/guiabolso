@@ -17,6 +17,8 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -32,6 +34,23 @@ public class UsuarioServiceImpl implements UsuarioService {
         if(op.isPresent())
             return ResponseEntity.ok(op.get().getTransacoes());
         return ErrosExceptions.notFound("Transação do usuário não encontrada","A transação não foi encontrada no banco de dados");
+    }
+
+    @Override
+    public ResponseEntity<List<Transacao>> listTransactions(Integer userId, Integer year, Integer month) {
+        Optional<Usuario> op = repository.getUsuario(userId);
+        if(op.isPresent())
+            return ResponseEntity.ok(op.get().getTransacoes());
+        List<Transacao> transacoes = op.get().getTransacoes().stream()
+                                    .filter(transacao -> transacao.getData().getYear() == year)
+                                    .filter(transacao -> transacao.getData().getMonth().getValue() == month)
+                                    .collect(Collectors.toList());
+
+        if(transacoes.isEmpty())
+            return ErrosExceptions.notFound("Não foi encontrado nenhuma transação nesse periodo",
+                    "Não consta em nosso banco de dados alguma transação nesse periodo");
+
+        return ResponseEntity.ok(transacoes);
     }
 
     @Override

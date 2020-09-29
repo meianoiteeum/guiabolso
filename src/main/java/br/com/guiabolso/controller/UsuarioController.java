@@ -36,4 +36,12 @@ public class UsuarioController {
     public ResponseEntity<List<Transacao>> listAllTransactions(@PathVariable Integer id){
         return service.listTransactions(id);
     }
+
+    @GetMapping("/{id}/transactions/{year}/{month}")
+    @ApiOperation("List Transaction")
+    public ResponseEntity<List<Transacao>> listAllTransactions(@PathVariable Integer id,
+                                                               @PathVariable Integer year,
+                                                               @PathVariable Integer month){
+        return service.listTransactions(id, year, month);
+    }
 }
