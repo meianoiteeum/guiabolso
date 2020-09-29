@@ -10,9 +10,9 @@
 - [x] cada descrição deve ter no mínimo 10 caracteres
 - [x] cada descrição não pode superar 60 caracteres
 - [ ] cada transação deve ter um valor aleatório
-- [ ] o valor da transação deve ser representado por um número inteiro
-- [ ] o valor da transação deverá ter seus 2 últimos dígitos representando os centavos
-- [ ] um valor de 8989 representa, portanto, R$ 89,89
+- [x] o valor da transação deve ser representado por um número inteiro
+- [x] o valor da transação deverá ter seus 2 últimos dígitos representando os centavos
+- [x] um valor de 8989 representa, portanto, R$ 89,89
 - [ ] o valor da transação deve estar entre -9.999.999 e 9.999.999, inclusive
 - [ ] cada transação deve ter o timestamp de uma data aleatória em formato long
 - [ ] a data aleatória deve estar dentro do range de ano e mês dados
